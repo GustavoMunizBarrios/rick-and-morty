@@ -30,7 +30,7 @@ function App() {
    }
 
    const onClose = (id) => {
-      const charactersFiltered = characters.filter(character => character.id !== Number(id))// si da true se queda si da false se va el character
+      const charactersFiltered = characters.filter(character => character.id !== id)// si da true se queda si da false se va el character
       setCharacters(charactersFiltered)
    }
 
