@@ -3,15 +3,33 @@ import Cards from './components/Cards.jsx';
 import Nav from './components/Nav';
 import About from './components/About';
 import Detail from './components/Detail';
-import { useState } from 'react';
+import Form from './components/Form';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
 const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
 const API_KEY = 'f99ef8399d40.cea0bfba7c15f21eb580';
 
+const email = 'Gustavo@gmail.com'
+const password = '12345'
+
 function App() {
+   const location = useLocation();
+   const navigate = useNavigate()
    const [characters, setCharacters] = useState([]); //characters es un estado del tipo array de objetos
+   const [acess, setAcces] = useState(false);
+
+   const login = (userData) => {
+      if(userData.email === email && userData.password === password){
+         setAcces(true)
+         navigate('/home')
+      }
+   }
+
+   useEffect(() => { // cada vez que cambie acess se ejecuta lo que este en useEffect
+      !acess && navigate('/') // si acess esta en false entonces no va a llevar a otra ruta que no sea /
+   }, [acess]) // El array de dependencias se queda "escuchando" a acess
 
    // La función onSearch agrega un nuevo personaje al estado local characters
    const onSearch = (id) => {
@@ -42,10 +60,14 @@ function App() {
 
    return (
       <div className='App'>
-         <Nav onSearch={onSearch} /> {/* le pasamos por propiedad a Nav la función onSearch */}
+         {
+            location.pathname !== '/' && <Nav onSearch={onSearch} />   //pathname me dice en donde esta el usuario
+         }
+          {/* le pasamos por propiedad a Nav la función onSearch */}
 
          {/* Con Route definimos las rutas y que se ve a mostrar en cada una de ellas, después con Link le mostramos a que path se va a dirigir */}
          <Routes>
+            <Route path='/' element={<Form login={login}/>}/>
             <Route path='/home' element={ <Cards characters={characters} onClose={onClose}/> }/>
             <Route path='/about' element={<About/>} />
             <Route path='/detail/:id' element={<Detail/>} />
