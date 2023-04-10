@@ -44,6 +44,7 @@ function App() {
       <div className='App'>
          <Nav onSearch={onSearch} /> {/* le pasamos por propiedad a Nav la función onSearch */}
 
+         {/* Con Route definimos las rutas y que se ve a mostrar en cada una de ellas, después con Link le mostramos a que path se va a dirigir */}
          <Routes>
             <Route path='/home' element={ <Cards characters={characters} onClose={onClose}/> }/>
             <Route path='/about' element={<About/>} />

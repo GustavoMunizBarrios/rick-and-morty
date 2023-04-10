@@ -5,7 +5,7 @@ export default function Card({ id, name, status, species, gender, origin, image,
       <div>
          <button onClick={() => onClose(id)}>X</button>
 
-         <Link to={`/detail/${id}`}>
+         <Link to={`/detail/${id}`}> {/* la ruta me va a dirigir a a /detail mas el id que le pasemos por parámetro a Card */}
             <h2>{name}</h2>
          </Link>
 
