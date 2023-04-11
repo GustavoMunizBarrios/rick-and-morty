@@ -12,18 +12,18 @@ const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
 const API_KEY = 'f99ef8399d40.cea0bfba7c15f21eb580';
 
 const email = 'Gustavo@gmail.com'
-const password = '12345'
+const password = '123456'
 
 function App() {
-   const location = useLocation();
-   const navigate = useNavigate()
+   const location = useLocation(); //Retorna la locación del objeto. la cual representa la url
+   const navigate = useNavigate() // Cambia la locación de la url 
    const [characters, setCharacters] = useState([]); //characters es un estado del tipo array de objetos
-   const [acess, setAcces] = useState(false);
+   const [acess, setAcces] = useState(false); //acess es un estado inicializado en false
 
    const login = (userData) => {
       if(userData.email === email && userData.password === password){
-         setAcces(true)
-         navigate('/home')
+         setAcces(true);
+         navigate('/home');
       }
    }
 
@@ -61,7 +61,8 @@ function App() {
    return (
       <div className='App'>
          {
-            location.pathname !== '/' && <Nav onSearch={onSearch} />   //pathname me dice en donde esta el usuario
+            //pathname me dice la url del usuario, si esta es diferente de '/' entonces randeriza a Nav
+            location.pathname !== '/' && <Nav onSearch={onSearch} />   
          }
           {/* le pasamos por propiedad a Nav la función onSearch */}
 
