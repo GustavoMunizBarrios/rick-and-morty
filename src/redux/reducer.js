@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux";
 import { ADD_FAV, REMOVE_FAV } from "./action-types";
 
 const initialState = {
@@ -5,18 +6,27 @@ const initialState = {
 }
 
 
-const reducer = (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }) => { //el segundo parámetro es action,
+                                                                //y como este es un objeto con dos tiene dos propiedades (type, payload)
+                                                                //hacemos destructuring.
     switch( type ){
-        case ADD_FAV:
+        case ADD_FAV: // Agrega el personaje que se recibe por payload al estado "myFavorites"
             return {
-                ...state,
-                myFavorites: [...state.myFavorites, payload]
+                ...state, //Hacemos una copia del estado
+                myFavorites: [...state.myFavorites, payload] //El array myFavorites será igual al estado myfavorites concatenando el
+                                                             // payload que es igual a character (al personaje), recordemos que
+                                                             // character es un objeto con las propiedades del personaje
             }
 
-        case REMOVE_FAV: 
+        case REMOVE_FAV: // Elimina a un personaje del estado "myFavorites" a partir de un id que recibas por payload
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
+                //Recordar que el método filter devuelve un nuevo array con los elementos que cumplan con la condición especificada 
+                myFavorites: state.myFavorites.filter(fav => fav.id !== payload) // Aplicamos un método filter al estado 
+                                                                                // myFavorites, recorremos a cada chacaracter dentro de 
+                                                                                // myFavorites, si el id de algun character es diferente
+                                                                                // al id que recibimos por payload entonces lo agrega
+                                                                                // al nuevo array myFavorites.
             }
 
         default:
