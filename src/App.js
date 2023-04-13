@@ -68,7 +68,7 @@ function App() {
 
          {/* Con Route definimos las rutas y que se ve a mostrar en cada una de ellas, después con Link le mostramos a que path se va a dirigir */}
          <Routes>
-            <Route path='/' element={<Form login={login}/>}/>
+            <Route path='/' element={<Form login={login}  setAcces={setAcces}/>}/>
             <Route path='/home' element={ <Cards characters={characters} onClose={onClose}/> }/>
             <Route path='/about' element={<About/>} />
             <Route path='/detail/:id' element={<Detail/>} />
