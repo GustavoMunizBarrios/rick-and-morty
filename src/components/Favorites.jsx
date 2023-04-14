@@ -7,7 +7,7 @@ const Favorites = ({myFavorites}) => { //estado global myFavorites por props
     return (
         <div>
             {// mapeamos el estado myfavorites (que es un array) y lo randerizamos utilizando el componente Card
-                myFavorites.map(fav => {
+                myFavorites?.map(fav => { // agregamos el condicional ? changing para evitar que se rompa 
                     return(
                         <Card
                             key={fav.id}
@@ -16,6 +16,7 @@ const Favorites = ({myFavorites}) => { //estado global myFavorites por props
                             species={fav.species}
                             gender={fav.gender}
                             image={fav.image}
+                            onClose={fav.onClose}
                         />
                     )
                 })
