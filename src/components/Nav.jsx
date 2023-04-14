@@ -19,6 +19,10 @@ const Nav = ({ onSearch,  setAccess }) => {
                 <Link to='/home' >HOME</Link>
             </button>
 
+            <button>
+                <Link to='/favorites' >Favorites</Link>
+            </button>
+
             <button onClick={handlelogOut}>Log Out</button>
         </nav>
     )

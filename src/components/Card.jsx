@@ -21,9 +21,9 @@ function Card({ id, name, species, gender, image, onClose, addFav, removeFav, my
    //Este useEffect comprobará si el personaje que contiene la Card ya esta dentro de tus favoritos. En ese caso setteará el 
    //estado isFav en true
    useEffect(() => {
-      myFavorites.forEach((fav) => { //recorre al estaod global myFavorites
-         if (fav.id === id) {
-            setIsFav(true);
+      myFavorites.forEach((fav) => { //recorre al estado global myFavorites que contiene el objeto de cada personaje
+         if (fav.id === id) { //si el id de ese personaje es igual al id que estamos recibiendo por props entonces:
+            setIsFav(true);   //el estado isFav se settea a true
          }
       });
    }, [myFavorites]);
