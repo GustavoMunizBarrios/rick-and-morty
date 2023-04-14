@@ -1,5 +1,5 @@
 import { bindActionCreators } from "redux";
-import { ADD_FAV, FILTER, REMOVE_FAV } from "./action-types";
+import { ADD_FAV, FILTER, REMOVE_FAV, ORDER } from "./action-types";
 
 const initialState = {
     myFavorites: [],
