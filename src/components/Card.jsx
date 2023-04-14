@@ -22,7 +22,7 @@ function Card({ id, name, status, species, gender, origin, image, onClose }) {
 const mapDispatchToProps = (dispatch) => { //dispatach de las dos actions
    return {
       addFav: () => {dispatch(addFav())}, //necesitamos despachar siempre para obtener un objeto
-      removeFav: () => {dispatch(remove())}
+      removeFav: () => {dispatch(removeFav())}
    }
 }
 export default connect(
